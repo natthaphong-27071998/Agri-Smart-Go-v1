@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agri-Smart Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://unpkg.com/docx@8.5.0/build/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+      body {
+        font-family: 'Chakra Petch', sans-serif;
+        @apply bg-gray-100 dark:bg-gray-900 transition-colors duration-300;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      }
+      .text-shadow-sm {
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      }
+      @media print {
+        /* Hide all elements marked as no-print */
+        .no-print {
+          display: none !important;
+        }
+
+        /* Reset the main application layout to simple blocks, overriding flex/grid */
+        body, #root, #app-container, #content-wrapper, #content-wrapper > main {
+          display: block !important;
+          position: static !important;
+          height: auto !important;
+          overflow: visible !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          background: none !important;
+          box-shadow: none !important;
+          border: none !important;
+          color: #000 !important;
+        }
+        
+        /* Hide all direct children of the main content area */
+        #content-wrapper > main > * {
+            display: none !important;
+        }
+
+        /* Except for our reports page container, which we want to show */
+        #content-wrapper > main > .reports-page-container {
+            display: block !important;
+        }
+        
+        /* Make the report panel itself take up the full width */
+        .reports-page-container > .report-content-panel {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 1rem !important; /* Add padding for print margins */
+            box-shadow: none !important;
+            border: none !important;
+            background: #fff !important;
+        }
+        
+        /* The report panel's parent (the page container) should also be a simple block */
+        .reports-page-container {
+          display: block !important;
+        }
+      }
+    </style>
+  <script>
+      // Prevents Flash of Unstyled Content (FOUC) for dark mode
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+  </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^6.24.1",
+    "recharts": "https://esm.sh/recharts@^2.12.7",
+    "react-markdown": "https://esm.sh/react-markdown@^9.0.1",
+    "remark-gfm": "https://esm.sh/remark-gfm@^4.0.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.8.0",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.45.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
