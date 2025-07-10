@@ -1,0 +1,15 @@
+{
+  "name": "agri-smart-go-server",
+  "version": "1.0.0",
+  "description": "A web server for the Agri-Smart Go application.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
